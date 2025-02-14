@@ -1,0 +1,232 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/marketStyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Tienda</title>
+  </head>
+  <body>
+    <!-- Navegación -->
+    <div class="container">
+      <!-- Contacto -->
+      <div class="header">
+        <p>Contáctanos: 3137443590</p>
+      </div>
+
+      <!-- Logo y Barra de Búsqueda -->
+      <div class="sidebar">
+        <img src="/media/Logos/Logo.jpeg" alt="Logo" width="300" height="300" />
+        <p class="welcome-message">¡Bienvenidos a la Piñatería!</p>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Buscar..."
+            name="search"
+            id="search"
+          />
+          <button id="btn-search">Buscar</button>
+        </div>
+      </div>
+
+      <div class="nav">
+        <nav>
+          <ul>
+            <li>
+              <a href="#" id="search-Nav"
+                ><i class="fa-brands fa-searchengin"></i>Buscar</a
+              >
+            </li>
+            <li>
+              <a href="#" id="catalog-Nav"
+                ><i class="fa-solid fa-list"></i>Catálogo</a
+              >
+            </li>
+            <li>
+              <a href="#" id="main-Nav"
+                ><i class="fa-brands fa-osi"></i>Inicio</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Contenido Principal -->
+      <div class="main-products">
+        <div class="heaeder-products">
+          <h2>Productos</h2>
+          <p>Aquí se mostrarán los productos disponibles.</p>
+        </div>
+
+        <div class="pinatas">
+          <h1>Piñatas</h1>
+
+          <a href="/market-search/?search=piñatas-niño&page=1"
+            ><img
+              src="/media/Logos/niño.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=piñatas-niña&page=1"
+            ><img
+              src="/media/Logos/niña.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=piñatas-adulto&page=1"
+            ><img
+              src="/media/Logos/adultos.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+        </div>
+
+        <div class="porcelanicron">
+          <h1>Porcelanicron</h1>
+
+          <a href="/market-search/?search=porcelanicron-matrimonio&page=1"
+            ><img
+              src="/media/Logos/matrimonio.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=porcelanicron-quinceañeras&page=1"
+            ><img
+              src="/media/Logos/quinceañeras.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+
+          <a href="/market-search/?search=porcelanicron-animados&page=1"
+            ><img
+              src="/media/Logos/personajesAnimados.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=porcelanicron-profesiones&page=1"
+            ><img
+              src="/media/Logos/profesiones.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=porcelanicron-comunion&page=1"
+            ><img
+              src="/media/Logos/primeraComunion.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=porcelanicron-grados&page=1"
+            ><img
+              src="/media/Logos/grado.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+        </div>
+
+        <div class="stickers">
+          <h1>Stickers</h1>
+
+          <a href="/market-search/?search=stickers-niño&page=1"
+            ><img
+              src="/media/Logos/niño.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=stickers-niña&page=1"
+            ><img
+              src="/media/Logos/niña.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=stickers-adulto&page=1"
+            ><img
+              src="/media/Logos/adultos.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+        </div>
+
+        <div class="toppers">
+          <h1>Toppers</h1>
+
+          <a href="/market-search/?search=toppers-cumpleanos&page=1"
+            ><img
+              src="/media/Logos/felizCumpleaños.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=toppers-feliz-dia&page=1"
+            ><img
+              src="/media/Logos/felizDia.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=toppers-aniversario&page=1"
+            ><img
+              src="/media/Logos/amorAniversario.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=toppers-grados&page=1"
+            ><img
+              src="/media/Logos/grado.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=toppers-comunion&page=1"
+            ><img
+              src="/media/Logos/primeraComunion.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+
+          <a href="/market-search/?search=toppers-numeros&page=1"
+            ><img
+              src="/media/Logos/numeros.jpeg"
+              alt="Logo"
+              width="300"
+              height="300"
+          /></a>
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/filterproducts.js' %}"></script>
+  </body>
+</html>
