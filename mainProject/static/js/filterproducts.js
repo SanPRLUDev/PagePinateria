@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener(('click'), (event_mul) => {
     if(event_mul.target == mainNav){
-      window.location.href = "/market/"
+      window.location.href = "/"
     }
     else if(event_mul.target == btnSearch)
     {
