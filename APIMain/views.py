@@ -8,6 +8,8 @@ from rest_framework.parsers import MultiPartParser, FormParser #Permite manejar 
 from rest_framework.pagination import PageNumberPagination
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
+import os
+from django.conf import settings
 
 # Create your views here.
 class LoginPageView(APIView):
@@ -100,6 +102,9 @@ class ProductListView(APIView):
         
         try:
             product = Product.objects.get(name = name)
+            imagepath = f'mainProject/static/media/{product.image}'
+            print(imagepath)
+            os.remove(imagepath)
             product.delete()
             return Response({'message':'Producto eliminado con exito'}, status=status.HTTP_204_NO_CONTENT)
         except Product.DoesNotExist:
