@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 #import dj_database_url
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -159,3 +162,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 1
 }
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": "dnhlu8ghp",  # ⬅️ Tu Cloud Name
+    "API_KEY": "658381755286363",  # ⬅️ Tu API Key
+    "API_SECRET": "oUfGk8R2erN3N2clzaMaO_WihLc",  # ⬅️ Tu API Secret
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"

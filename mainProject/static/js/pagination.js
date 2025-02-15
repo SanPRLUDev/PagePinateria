@@ -23,7 +23,9 @@ fetchProducts = async (url) => {
       div.className = "container";
 
       const img = document.createElement("img");
+      console.log(product.image_url)
       img.src = product.image_url || "default_image.png";
+      //img.src =  "/media/Logos/Logo.jpeg";
       img.width = 500;
       img.height = 400;
 
