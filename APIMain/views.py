@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 import os
 from django.conf import settings
+import cloudinary.uploader
 
 # Create your views here.
 class LoginPageView(APIView):
@@ -51,9 +52,6 @@ class RegisterView(APIView):
         
         return Response({"message":"Usuario creado correctamente", "redirect": "/api/Probes/"}, status=status.HTTP_200_OK)
     
-        
-        
-     
 class CreateProductView(APIView):
     def get(self, request):
         if not request.user.is_authenticated:
@@ -94,21 +92,24 @@ class ProductListView(APIView):
     def delete(self, request):     
         if not request.user.is_authenticated:
             return Response({"error": "No estás autenticado"}, status=status.HTTP_403_FORBIDDEN)
-        
+
         name = request.data.get('name')
-        
+
         if not name:
             return Response({"error": "El nombre es requerido"}, status=status.HTTP_400_BAD_REQUEST)
-        
+
         try:
-            product = Product.objects.get(name = name)
-            imagepath = f'mainProject/static/media/{product.image}'
-            print(imagepath)
-            os.remove(imagepath)
+            product = Product.objects.get(name=name)
+            image_url = product.image.url
+            public_id = image_url.split("/")[-1].split(".")[0]
+            cloudinary.uploader.destroy(public_id)
+
             product.delete()
-            return Response({'message':'Producto eliminado con exito'}, status=status.HTTP_204_NO_CONTENT)
+
+            return Response({'message': 'Producto eliminado con éxito'}, status=status.HTTP_204_NO_CONTENT)
+
         except Product.DoesNotExist:
-            return Response({'error':'Producto no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Producto no encontrado'}, status=status.HTTP_404_NOT_FOUND)
         
 
 def ViewProducts(request):
