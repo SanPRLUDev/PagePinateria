@@ -1,13 +1,14 @@
 window.onload = function () {
   const FormCreate = document.getElementById("FormCreate");
 
-  console.log('Hello')
+  console.log("Hi");
 
   document.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     if (event.target == FormCreate) {
       const dataForm = new FormData(FormCreate);
+      console.log(dataForm)
 
       const csrfToken = document.querySelector(
         "[name=csrfmiddlewaretoken]"

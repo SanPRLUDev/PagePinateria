@@ -143,7 +143,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mainProject', 'static'),  # 📂 Apunta a mainProject/mainProject/static/
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mainProject/static/media')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'mainProject/static/media')
 MEDIA_URL = '/media/'
 
 if not DEBUG:
@@ -167,6 +167,14 @@ CLOUDINARY_STORAGE = {
     "CLOUD_NAME": "dnhlu8ghp",  # ⬅️ Tu Cloud Name
     "API_KEY": "658381755286363",  # ⬅️ Tu API Key
     "API_SECRET": "oUfGk8R2erN3N2clzaMaO_WihLc",  # ⬅️ Tu API Secret
+    'SECURE': True
 }
+
+cloudinary.config(
+    cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
+    api_key=CLOUDINARY_STORAGE['API_KEY'],
+    api_secret=CLOUDINARY_STORAGE['API_SECRET'],
+    secure=CLOUDINARY_STORAGE['SECURE']
+)
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
