@@ -19,7 +19,7 @@
       </div>
 
       <div class="sidebar">
-        <img src="{% static 'media/Logos/Logo.jpeg' %}" alt="Logo" width="300" height="300" />
+        <img src="{% static 'media/Logos/Logo.jpeg' %}" alt="Logo" class="logo-img" />
         <p class="welcome-message">¡Bienvenidos a la Piñatería!</p>
         <div class="search-container">
           <input type="text" placeholder="Buscar..." name="search" id="search" />
@@ -45,36 +45,45 @@
 
         <div class="pinatas">
           <h1>Piñatas</h1>
-          <a href="/market-search/?search=piñatas-niño&page=1"><img src="{% static 'media/Logos/niño.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=piñatas-niña&page=1"><img src="{% static 'media/Logos/niña.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=piñatas-adulto&page=1"><img src="{% static 'media/Logos/adultos.jpeg' %}" alt="Logo" width="300" height="300" /></a>
+          <div class="image-container">
+            <a href="/market-search/?search=piñatas-niño&page=1"><img src="{% static 'media/Logos/niño.jpeg' %}" alt="pinata"  class="product-img" /></a>
+            <a href="/market-search/?search=piñatas-niña&page=1"><img src="{% static 'media/Logos/niña.jpeg' %}" alt="pinata"  class="product-img"/></a>
+            <a href="/market-search/?search=piñatas-adulto&page=1"><img src="{% static 'media/Logos/adultos.jpeg' %}" alt="pinata"  class="product-img" /></a>
+          </div>
         </div>
 
         <div class="porcelanicron">
           <h1>Porcelanicron</h1>
-          <a href="/market-search/?search=porcelanicron-matrimonio&page=1"><img src="{% static 'media/Logos/matrimonio.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=porcelanicron-quinceañeras&page=1"><img src="{% static 'media/Logos/quinceañeras.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=porcelanicron-animados&page=1"><img src="{% static 'media/Logos/personajesAnimados.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=porcelanicron-profesiones&page=1"><img src="{% static 'media/Logos/profesiones.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=porcelanicron-comunion&page=1"><img src="{% static 'media/Logos/primeraComunion.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=porcelanicron-grados&page=1"><img src="{% static 'media/Logos/grado.jpeg' %}" alt="Logo" width="300" height="300" /></a>
+          <div class="image-container">          
+            <a href="/market-search/?search=porcelanicron-matrimonio&page=1"><img src="{% static 'media/Logos/matrimonio.jpeg' %}" alt="porcelanicrones" class="product-img" /></a>
+            <a href="/market-search/?search=porcelanicron-quinceañeras&page=1"><img src="{% static 'media/Logos/quinceañeras.jpeg' %}" alt="porcelanicrones" class="product-img" /></a>
+            <a href="/market-search/?search=porcelanicron-animados&page=1"><img src="{% static 'media/Logos/personajesAnimados.jpeg' %}" alt="porcelanicrones" class="product-img" /></a>
+            <a href="/market-search/?search=porcelanicron-profesiones&page=1"><img src="{% static 'media/Logos/profesiones.jpeg' %}" alt="porcelanicrones" class="product-img" /></a>
+            <a href="/market-search/?search=porcelanicron-comunion&page=1"><img src="{% static 'media/Logos/primeraComunion.jpeg' %}" alt="porcelanicrones" class="product-img" /></a>
+            <a href="/market-search/?search=porcelanicron-grados&page=1"><img src="{% static 'media/Logos/grado.jpeg' %}" alt="porcelanicrones" class="product-img" /></a>
+          </div>
         </div>
 
         <div class="stickers">
           <h1>Stickers</h1>
-          <a href="/market-search/?search=stickers-niño&page=1"><img src="{% static 'media/Logos/niño.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=stickers-niña&page=1"><img src="{% static 'media/Logos/niña.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=stickers-adulto&page=1"><img src="{% static 'media/Logos/adultos.jpeg' %}" alt="Logo" width="300" height="300" /></a>
+          <div class="image-container">
+            <a href="/market-search/?search=stickers-niño&page=1"><img src="{% static 'media/Logos/niño.jpeg' %}" alt="sticker" class="product-img" /></a>
+            <a href="/market-search/?search=stickers-niña&page=1"><img src="{% static 'media/Logos/niña.jpeg' %}" alt="sticker" class="product-img" /></a>
+            <a href="/market-search/?search=stickers-adulto&page=1"><img src="{% static 'media/Logos/adultos.jpeg' %}" alt="sticker" class="product-img" /></a>
+          </div> 
         </div>
 
         <div class="toppers">
           <h1>Toppers</h1>
-          <a href="/market-search/?search=toppers-cumpleanos&page=1"><img src="{% static 'media/Logos/felizCumpleaños.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=toppers-feliz-dia&page=1"><img src="{% static 'media/Logos/felizDia.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=toppers-aniversario&page=1"><img src="{% static 'media/Logos/amorAniversario.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=toppers-grados&page=1"><img src="{% static 'media/Logos/grado.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=toppers-comunion&page=1"><img src="{% static 'media/Logos/primeraComunion.jpeg' %}" alt="Logo" width="300" height="300" /></a>
-          <a href="/market-search/?search=toppers-numeros&page=1"><img src="{% static 'media/Logos/numeros.jpeg' %}" alt="Logo" width="300" height="300" /></a>
+          <div class="image-container">
+            <a href="/market-search/?search=toppers-cumpleanos&page=1"><img src="{% static 'media/Logos/felizCumpleaños.jpeg' %}" alt="topper" class="product-img" /></a>
+            <a href="/market-search/?search=toppers-feliz-dia&page=1"><img src="{% static 'media/Logos/felizDia.jpeg' %}" alt="topper" class="product-img" /></a>
+            <a href="/market-search/?search=toppers-aniversario&page=1"><img src="{% static 'media/Logos/amorAniversario.jpeg' %}" alt="topper" class="product-img" /></a>
+            <a href="/market-search/?search=toppers-grados&page=1"><img src="{% static 'media/Logos/grado.jpeg' %}" alt="topper" class="product-img" /></a>
+            <a href="/market-search/?search=toppers-comunion&page=1"><img src="{% static 'media/Logos/primeraComunion.jpeg' %}" alt="topper" class="product-img" /></a>
+            <a href="/market-search/?search=toppers-numeros&page=1"><img src="{% static 'media/Logos/numeros.jpeg' %}" alt="topper" class="product-img" /></a>
+          </div>
+          
         </div>
       </div>
     </div>
