@@ -35,6 +35,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  document.addEventListener("keydown", (eventk) =>{
+    if(eventk.key == "Enter"){
+      const searchTerm = searchInput.value.trim();
+      if (searchTerm) {
+        window.location.href = `/market-search/?search=${encodeURIComponent(
+          searchTerm
+        )}&page=1`;
+      }
+    }
+  });
+
   if (searchParam) {
     searchInput.value = searchParam;
     searchInput.hidden = true;
