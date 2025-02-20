@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'APIMain',
     'rest_framework',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
