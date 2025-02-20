@@ -7,9 +7,9 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         return [
-            'login', 'register', 'Probes', 'products', 'logout', 'list-products',
-            'mainPage', 'market-search', 'market-search-api'
-        ]  # Nombres de las vistas
+            'mainPage',  # Página principal
+            'market-search',  # Buscador de productos
+        ] # Nombres de las vistas
 
     def location(self, item):
         return reverse(item)
