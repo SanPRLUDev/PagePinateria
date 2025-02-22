@@ -11,6 +11,44 @@ from django.contrib.auth import login, authenticate, logout
 import os
 from django.conf import settings
 import cloudinary.uploader
+from django.http import JsonResponse
+
+
+import jwt
+import datetime
+
+
+def GenerateJWT(user):
+    now = datetime.datetime.utcnow()
+    
+    payload ={
+        "id": user.id,
+        "username": user.username,
+        "iat": now,
+        "exp": now+datetime.timedelta(hours=1),
+    }
+    
+    token = jwt.encode(payload, "ItsTimeToCreate", algorithm="HS256")
+    
+    return token
+    
+def RequireVerification(request):
+    token = request.COOKIES.get("jwt")
+    if not token:
+        return False
+    
+    payload = jwt.decode(token, "ItsTimeToCreate", algorithms=["HS256"])
+    
+    if not payload:
+        return False
+    
+    if request.user.id != payload["id"]:
+        return False
+    
+    if request.user.username != payload["username"]:
+        return False
+    
+    return True
 
 # Create your views here.
 class LoginPageView(APIView):
@@ -24,8 +62,11 @@ class LoginPageView(APIView):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            token = GenerateJWT(user)
+            response = Response({"message":"Usuario Logeado con exito", "redirect":"/api/products/"}, status=status.HTTP_200_OK)
+            response.set_cookie("jwt",token,secure=True,httponly=True,samesite="Strict")
         
-            return Response({"message":"Usuario Logeado con exito", "redirect":"/api/products/"}, status=status.HTTP_200_OK)
+            return response
         return Response({"error":"Usuario No Logeado", "redirect":"/api/login/"}, status=status.HTTP_400_BAD_REQUEST)
        
 class RegisterView(APIView):
@@ -54,7 +95,10 @@ class RegisterView(APIView):
     
 class CreateProductView(APIView):
     def get(self, request):
-        if not request.user.is_authenticated:
+        isSessionId = request.user.is_authenticated
+        isJWT = RequireVerification(request)
+            
+        if not (isSessionId and isJWT):
            return redirect("login")
         else:
             return render(request, "createProduct.html")  
@@ -113,15 +157,21 @@ class ProductListView(APIView):
         
 
 def ViewProducts(request):
-    if not request.user.is_authenticated:
+    
+    isSessionId = request.user.is_authenticated
+    isJWT = RequireVerification(request)
+    
+    if not (isSessionId and isJWT):
         return redirect("login")   
     else: 
         return render(request, "ViewProduct.html")
   
 def LogoutView(request):
     logout(request)
-    return Response({"message":"Usuario acaba de salir", "redirect":"/api/login/"}, status=status.HTTP_200_OK)
+    response = JsonResponse({"message":"Logout exitoso", "redirect":"/api/login/"}, status=status.HTTP_200_OK)
+    response.delete_cookie("jwt")
+    return response
     
-    
-    
+
+
             
