@@ -4,53 +4,15 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Product
 from .serializers import ProductSerializer
-from rest_framework.parsers import MultiPartParser, FormParser #Permite manejar archivos
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.pagination import PageNumberPagination
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
-import os
-from django.conf import settings
 import cloudinary.uploader
 from django.http import JsonResponse
 
+from .utils import RequireVerification, GenerateJWT 
 
-import jwt
-import datetime
-
-
-def GenerateJWT(user):
-    now = datetime.datetime.utcnow()
-    
-    payload ={
-        "id": user.id,
-        "username": user.username,
-        "iat": now,
-        "exp": now+datetime.timedelta(hours=1),
-    }
-    
-    token = jwt.encode(payload, "ItsTimeToCreate", algorithm="HS256")
-    
-    return token
-    
-def RequireVerification(request):
-    token = request.COOKIES.get("jwt")
-    if not token:
-        return False
-    
-    payload = jwt.decode(token, "ItsTimeToCreate", algorithms=["HS256"])
-    
-    if not payload:
-        return False
-    
-    if request.user.id != payload["id"]:
-        return False
-    
-    if request.user.username != payload["username"]:
-        return False
-    
-    return True
-
-# Create your views here.
 class LoginPageView(APIView):
     def get(self, request):
         return render(request, 'login.html')
