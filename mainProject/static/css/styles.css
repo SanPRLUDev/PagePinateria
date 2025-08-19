@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: #FADADD; 
+    background: linear-gradient(to right, #F497A9, #FADADD, #FFFFFF);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#Nav{
+    margin: 0;
+    padding: 10px;
+
+    width: 100%;
+    background-color: #e77ec1;
+    
+
+}
+
+#Nav ul{
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px
+}
+
+#Nav button {
+    background-color: #c25499;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+#Nav button:hover {
+    background-color: #9b146a;
+}
+
+.container{
+    background-color: white;
+
+    margin: 20px;
+    padding: 30px;
+    border: solid 3px transparent;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 55vh;
+
+    position: relative;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+
+}
+
+.container form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form input, form textarea, form select{
+    margin: 5px;
+    padding: 10px;
+
+    width: 100%;
+    height: 50px;
+
+    font-size: 10px;
+    font-weight: 10px;
+
+    outline: none;
+
+    border: solid 1px #ccc;
+    border-radius: 10px;
+}
+
+form textarea{
+    resize: none;
+    height: 100px;
+}
+
+form h1{
+    color: #b78a8f;
+    font-size: 30px;
+}
+
+
+
+form button{
+    background-color: #F497A9;
+    color: white;
+
+    border: solid 1px #ccc;
+    border-radius: 7px;
+
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    margin: 0;
+    padding: 5px;
+
+
+}
+
+form button:hover{
+    background-color: #e76f8d;
+    cursor: pointer;
+}

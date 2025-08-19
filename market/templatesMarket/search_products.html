@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/productsStyles.css' %}" />
+    <title>Market Search</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="nav">
+      <nav>
+        <ul>
+          <li>
+            <a href="/market-search" id="search-Nav">
+              <i class="fa-brands fa-searchengin"></i> Buscar
+            </a>
+          </li>
+          <li>
+            <a href="#" id="catalog-Nav">
+              <i class="fa-solid fa-list"></i> Catálogo
+            </a>
+          </li>
+          <li>
+            <a href="/" id="main-Nav">
+              <i class="fa-brands fa-osi"></i> Inicio
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <h1>Buscar productos</h1>
+    <h2 id="results-header"></h2>
+    <input type="text" id="search" placeholder="Busca productos..." />
+    <button id="btn-search">Buscar</button>
+
+    <!-- Contenedor de productos -->
+    <div id="product-container"></div>
+
+    <!-- Botones de paginación -->
+
+    <div class="container-pages">
+      <button id="prev-button" class="pagination-button" data-page="">
+        Anterior
+      </button>
+      <p id="Num-pages"></p>
+      <button id="next-button" class="pagination-button" data-page="">
+        Siguiente
+      </button>
+    </div>
+
+    <script src="{% static 'js/filterproductsMP.js' %}"></script>
+  </body>
+</html>
