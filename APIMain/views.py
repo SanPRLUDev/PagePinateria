@@ -25,7 +25,7 @@ class LoginPageView(APIView):
             login(request, user)
             token = GenerateJWT(user)
             response = Response({"message":"Usuario Logeado con exito", "redirect":"/api/products/"}, status=status.HTTP_200_OK)
-            response.set_cookie("jwt",token,secure=True,httponly=True,samesite="Strict")
+            response.set_cookie("jwt",token,secure=True,httponly=True,samesite="Lax")
         
             return response
         return Response({"error":"Usuario No Logeado", "redirect":"/api/login/"}, status=status.HTTP_400_BAD_REQUEST)
