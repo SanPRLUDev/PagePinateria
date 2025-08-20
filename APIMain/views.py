@@ -55,6 +55,8 @@ class RegisterView(APIView):
         return Response({"message":"Usuario creado correctamente", "redirect": "/api/Probes/"}, status=status.HTTP_200_OK)
     
 class CreateProductView(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+    
     def get(self, request):
         isSessionId = request.user.is_authenticated
         isJWT = RequireVerification(request)
@@ -65,7 +67,6 @@ class CreateProductView(APIView):
             return render(request, "createProduct.html")  
    
     def post(self, request):
-        self.parser_classes = (MultiPartParser, FormParser)
         serializer = ProductSerializer(data=request.data)
         
         if serializer.is_valid():
