@@ -20,6 +20,7 @@ window.onload = function () {
         headers: {
           "X-CSRFToken": csrfToken,
         },
+        credentials: "include"
       });
 
       if (response.ok) {

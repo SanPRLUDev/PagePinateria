@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     "www.pinateriamoli.com"
 ]
 
-CSFR_TRUSTED_ORIGINS = [
+
+CSRF_TRUSTED_ORIGINS = [
     'https://pinateriamoli.com',
     'https://www.pinateria.com',
     'http://pinateria.com',
