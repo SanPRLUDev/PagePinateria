@@ -51,8 +51,11 @@ class RegisterView(APIView):
             
         user = User.objects.create_user(username=username, email=email, password=password1)
         login(request, user)
+        token = GenerateJWT(user)
         
-        return Response({"message":"Usuario creado correctamente", "redirect": "/api/Probes/"}, status=status.HTTP_200_OK)
+        response = Response({"message":"Usuario creado correctamente", "redirect": "/api/Probes/"}, status=status.HTTP_200_OK)
+        response.set_cookie("jwt",token, secure=True, httponly=True, samesite="Lax")
+        return response
     
 class CreateProductView(APIView):
     parser_classes = (MultiPartParser, FormParser)
