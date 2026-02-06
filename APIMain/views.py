@@ -14,6 +14,7 @@ from .utils import RequireVerification, GenerateJWT
 
 class LoginPageView(APIView):
     def get(self, request):
+        print(f"Get redirect: {request.user.is_authenticated}")
         return render(request, 'login.html')
     
     def post(self, request):

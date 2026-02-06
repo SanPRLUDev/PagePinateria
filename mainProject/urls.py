@@ -31,6 +31,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('APIMain.urls')), 
     path('', include('market.urls')),
+    path('accounts/', include('allauth.urls')),
     path('sitemap.xml', custom_sitemap_view, {'sitemaps': sitemaps}, name='sitemap'),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]

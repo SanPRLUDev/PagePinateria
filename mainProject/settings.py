@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 #import dj_database_url
 from pathlib import Path
 import os
+from environ import Env
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = 'RENDER' not in os.environ
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1", 
@@ -48,10 +52,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    
     'APIMain',
+    'market',
+    
     'rest_framework',
     'django.contrib.sitemaps',
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,7 +77,28 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    "allauth.account.middleware.AccountMiddleware",
+    'APIMain.middleware.AuthCookieMiddleware',
 ]
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': env('OAUTH_GOOGLE_CLIENT_ID'),
+            'secret': env('OAUTH_GOOGLE_SECRET'),
+        },
+        'SCOPE': [
+            'profile',
+            'email'
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+            'prompt': 'consent'
+        },
+    }
+}
 
 ROOT_URLCONF = 'mainProject.urls'
 
@@ -77,12 +113,20 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request',  # ⭐ IMPORTANTE para allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'mainProject.wsgi.application'
@@ -138,3 +182,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 1
 }
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_ADAPTER = 'APIMain.adapters.MyAccountAdapter'
+#SOCIALACCOUNT_ADAPTER = 'APIMain.adapters.MySocialAccountAdapter'

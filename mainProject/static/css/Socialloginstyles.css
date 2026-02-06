@@ -1,0 +1,100 @@
+/* Social Login Styles */
+.social-login-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 25px 0 20px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+    padding: 0 10px;
+    color: #999;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    gap: 10px;
+}
+
+.social-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.social-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Specific button styles */
+.github-btn .social-icon {
+    color: #333;
+}
+
+.twitter-btn .social-icon {
+    color: #000;
+}
+
+.facebook-btn .social-icon {
+    color: #1877f2;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .social-login-container {
+        padding: 0 10px;
+    }
+    
+    .social-btn {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .social-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
